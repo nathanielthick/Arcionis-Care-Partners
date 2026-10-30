@@ -1,0 +1,21 @@
+# Redirects for Domain.com hosting. Upload this file to the site's root folder (next to index.html).
+
+RewriteEngine On
+
+# 1. Send http:// and www. to https://arcioniscarepartners.com
+#    Domain.com's front proxy handles HTTPS, so check the forwarded protocol rather than %{HTTPS};
+#    if the proxy doesn't send this header, the rule simply does nothing instead of looping.
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://arcioniscarepartners.com%{REQUEST_URI} [R=301,L]
+
+# 2. Add the trailing slash to folders (/about -> /about/) without dropping back to http://
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*[^/])$ https://arcioniscarepartners.com/$1/ [R=301,L]
+
+# 3. Send /index.html (and /about/index.html etc.) to the clean URL
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://arcioniscarepartners.com/$1 [R=301,L]
+
+# Use the site's own not-found page
+ErrorDocument 404 /404.html
