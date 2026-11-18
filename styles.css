@@ -925,3 +925,56 @@ html{ scroll-padding-top: 150px; }
 .feedback-strip-inner strong{ color: var(--deep-teal); }
 .feedback-links{ display: flex; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 980px){ .contact-grid{ grid-template-columns: 1fr; gap: 32px; } }
+
+/* ===========================================================
+   Service pages: one shared layout, a slightly different feel each.
+   Respite = soft sky blue, Behavior Intervention = deep navy,
+   Community Living Supports = green.
+=========================================================== */
+.svc-respite{ --svc: #2F7489; --svc-tint: #EAF4F8; --svc-strong: #D3E9F0; --svc-art-radius: 30%; }
+.svc-behavior{ --svc: #0D3F66; --svc-tint: #ECF1F7; --svc-strong: #D6E1EE; --svc-art-radius: 50%; }
+.svc-cls{ --svc: #4B7A35; --svc-tint: #EEF5E9; --svc-strong: #D9EACD; --svc-art-radius: 62% 12% 62% 12%; }
+
+.svc .svc-hero{ background: linear-gradient(180deg, var(--svc-tint) 0%, var(--white) 92%); }
+.svc-hero-grid{ display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 48px; align-items: center; }
+.svc-hero-art{
+  width: 210px; height: 210px; border-radius: var(--svc-art-radius); background: var(--svc-strong); color: var(--svc);
+  display: flex; align-items: center; justify-content: center;
+}
+.svc-hero-art svg{ width: 104px; height: 104px; }
+.svc-tag{
+  display: inline-block; margin-top: 20px; padding: 6px 14px; border-radius: 999px;
+  background: var(--svc-strong); color: var(--svc); font-family: var(--font-mono); font-size: 0.72rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.svc .hero h1{ margin-top: 14px; }
+.svc-status{
+  display: flex; gap: 10px; align-items: flex-start; margin-top: 18px; max-width: 760px;
+  padding: 12px 16px; border-radius: 12px; background: #FFF6DB; border: 1px solid #E6CF83; color: #5A4700; font-size: 0.95rem;
+}
+.svc-status-dot{ flex-shrink: 0; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: #C9A227; }
+
+.svc .eyebrow{ color: var(--svc); }
+.svc .eyebrow::before{ background: var(--svc); }
+.svc .breadcrumb a{ color: var(--svc); }
+.svc .vital-divider path{ stroke: var(--svc); }
+.svc .section-mint{ background: var(--svc-tint); }
+.svc .check-list li::before, .svc .focus-list li::before{ background-color: var(--svc); }
+.svc .next-steps li::before{ border-color: var(--svc); color: var(--svc); }
+.svc .faq summary::after{ color: var(--svc); }
+.svc .related-card:hover{ border-color: var(--svc); }
+
+.svc-who{
+  background: var(--svc-tint); border: 1px solid var(--line); border-left: 4px solid var(--svc);
+  border-radius: 20px; padding: clamp(22px, 3vw, 34px);
+}
+
+@media (max-width: 760px){
+  .svc-hero-grid{ grid-template-columns: 1fr; gap: 0; }
+  .svc-hero-art{ display: none; }
+}
+
+/* Pending-program label on homepage service tiles, intake hours on contact */
+.tile-status{ align-self: flex-start; margin-top: -4px; padding: 3px 10px; border-radius: 999px; background: #FFF6DB; border: 1px solid #E6CF83; color: #5A4700; font-size: 0.75rem; font-weight: 600; }
+.contact-hours{ margin-top: 18px; font-size: 0.92rem; font-weight: 600; color: var(--deep-teal); }
+.contact-hours + .contact-faq{ margin-top: 6px; }
