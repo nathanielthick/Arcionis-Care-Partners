@@ -978,3 +978,16 @@ html{ scroll-padding-top: 150px; }
 .tile-status{ align-self: flex-start; margin-top: -4px; padding: 3px 10px; border-radius: 999px; background: #FFF6DB; border: 1px solid #E6CF83; color: #5A4700; font-size: 0.75rem; font-weight: 600; }
 .contact-hours{ margin-top: 18px; font-size: 0.92rem; font-weight: 600; color: var(--deep-teal); }
 .contact-hours + .contact-faq{ margin-top: 6px; }
+
+/* Careers: tree photos */
+.careers-grow-grid{ display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.careers-grow-grid > *{ min-width: 0; }
+.careers-grow-text h2{ margin: 14px 0 16px; }
+.careers-grow-text p{ max-width: 46ch; font-size: 1.05rem; }
+.careers-photos{ display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 24px); align-items: start; }
+.careers-photos img{ width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); box-shadow: 0 30px 60px -36px rgba(13,63,102,0.45); }
+.careers-photos img:nth-child(2){ margin-top: clamp(28px, 6vw, 72px); }
+@media (max-width: 860px){
+  .careers-grow-grid{ grid-template-columns: 1fr; }
+  .careers-photos{ max-width: 560px; }
+}

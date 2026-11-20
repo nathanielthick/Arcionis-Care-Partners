@@ -25,3 +25,19 @@ RewriteRule ^(.*/)?index\.html$ https://arcioniscarepartners.com/$1 [R=301,L]
 
 # Use the site's own not-found page
 ErrorDocument 404 /404.html
+
+# Browser caching. The host sends no caching instructions by default, so browsers guess and can
+# keep showing an old styles.css for days. Pages are always re-checked; styles.css and script.js
+# are linked as styles.css?v=YYYYMMDD and script.js?v=YYYYMMDD, so bump that number in every page
+# whenever either file changes and visitors get the new copy right away.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html?|xml|txt|webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.(jpe?g|png|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
